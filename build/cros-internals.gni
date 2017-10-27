@@ -1,0 +1,3 @@
+root_extra_deps = [
+  "//cros-internals:aura_window"
+]

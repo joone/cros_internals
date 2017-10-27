@@ -1,0 +1,31 @@
+executable("aura_window") {
+  output_name = "aura_window_demo"
+  testonly = true
+  sources = [ 
+    "aura_window/main.cc",
+  ]
+
+  deps = [ 
+    "//base",
+    "//base:i18n",
+    "//build/config:exe_and_shlib_deps",
+    "//build/win:default_exe_manifest",
+    "//components/viz/host",
+    "//skia",
+    "//third_party/icu",
+    "//ui/aura",
+    "//ui/aura:test_support",
+    "//ui/base",
+    "//ui/compositor",
+    "//ui/compositor:test_support",
+    "//ui/display",
+    "//ui/events",
+    "//ui/gfx",
+    "//ui/gfx/geometry",
+    "//ui/gl/init",
+    "//ui/gfx/x",
+  ]
+
+  configs += [ "//build/config/linux:x11" ]
+}
+
