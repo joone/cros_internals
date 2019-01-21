@@ -58,8 +58,8 @@
 <div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
   <div class="Subhead mb-2">
     <div class="Subhead-heading">
-      <a href="/cros_internals/posts/my-first-post/">
-        <div class="h2 mt-1 mb-1">My First Post</div>
+      <a href="/cros_internals/posts/the-windowservice2-of-cros/">
+        <div class="h2 mt-1 mb-1">The WindowService2(?) of CrOS</div>
       </a>
     </div>
     <div class="Subhead-description">
@@ -70,14 +70,48 @@
 
 
       <div class="float-md-right">
-        <span>2019-01-01</span>
+        <span>2018-08-08</span>
       </div>
     </div>
   </div>
   <div class="text-gray">
     
-    Hello, my chromium blog!
-    <a class="muted-link" href="/cros_internals/posts/my-first-post/">…</a>
+    Recently, WS was replaced with WS2:
+ window-service: removes mus_demo, test_wm, and some unnecessary deps Issue 865689 Remove window-service  I&rsquo;ve run mus_demo to test ozone-gbm, but now it&rsquo;s gone. :-( So, I need to figure it out what is the difference between WS1 and WS2.
+What is the Window Service of ChromeOS? Window Service is a kind of Window Compositor like Weston. It is a separate process from the browser process in CrOS.
+    <a class="muted-link" href="/cros_internals/posts/the-windowservice2-of-cros/">…</a>
+  </div>
+</div>
+
+  
+    
+    
+<div class="rounded-2 box-shadow-medium px-3 pb-2 pt-2 mb-3">
+  <div class="Subhead mb-2">
+    <div class="Subhead-heading">
+      <a href="/cros_internals/posts/linux-container-for-chromeos/">
+        <div class="h2 mt-1 mb-1">Linux Container for ChromeOS</div>
+      </a>
+    </div>
+    <div class="Subhead-description">
+      
+
+
+
+
+
+      <div class="float-md-right">
+        <span>2018-07-07</span>
+      </div>
+    </div>
+  </div>
+  <div class="text-gray">
+    
+    Recently, ChromeOS started to support Linux applications on ChomeOS. Google hasn&rsquo;t allowed ChromeOS to run native applications due to security reason. Finally, they found a way to support Linux application through the container technology.
+It is worth to read a discussion on CrOSVM on Hacker News because the original author joined the discussion. Here is the article about ChromeOS Linux container. https://www.zdnet.com/article/chrome-os-could-be-getting-containers-for-running-linux-vms/
+There is a Youtube video: https://www.youtube.com/watch?v=s9mrR2tqVbQ
+Here is the readme about CrOSVM:
+    <a class="muted-link" href="/cros_internals/posts/linux-container-for-chromeos/">…</a>
   </div>
 </div>
 

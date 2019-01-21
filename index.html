@@ -56,13 +56,29 @@
   
   <div>
     <div>
-      <a href="/cros_internals/posts/my-first-post/">
-        <h3>My First Post</h3>
+      <a href="/cros_internals/posts/the-windowservice2-of-cros/">
+        <h3>The WindowService2(?) of CrOS</h3>
       </a>
-      <small>http://joone.github.io/cros_internals/posts/my-first-post/</small>
-      2019-01-01
+      <small>http://joone.github.io/cros_internals/posts/the-windowservice2-of-cros/</small>
+      2018-08-08
     </div>
-    Hello, my chromium blog!
+    Recently, WS was replaced with WS2:
+ window-service: removes mus_demo, test_wm, and some unnecessary deps Issue 865689 Remove window-service  I&rsquo;ve run mus_demo to test ozone-gbm, but now it&rsquo;s gone. :-( So, I need to figure it out what is the difference between WS1 and WS2.
+What is the Window Service of ChromeOS? Window Service is a kind of Window Compositor like Weston. It is a separate process from the browser process in CrOS.
+  </div>
+  
+  <div>
+    <div>
+      <a href="/cros_internals/posts/linux-container-for-chromeos/">
+        <h3>Linux Container for ChromeOS</h3>
+      </a>
+      <small>http://joone.github.io/cros_internals/posts/linux-container-for-chromeos/</small>
+      2018-07-07
+    </div>
+    Recently, ChromeOS started to support Linux applications on ChomeOS. Google hasn&rsquo;t allowed ChromeOS to run native applications due to security reason. Finally, they found a way to support Linux application through the container technology.
+It is worth to read a discussion on CrOSVM on Hacker News because the original author joined the discussion. Here is the article about ChromeOS Linux container. https://www.zdnet.com/article/chrome-os-could-be-getting-containers-for-running-linux-vms/
+There is a Youtube video: https://www.youtube.com/watch?v=s9mrR2tqVbQ
+Here is the readme about CrOSVM:
   </div>
   
 

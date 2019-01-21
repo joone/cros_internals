@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  The WindowService2(?) of CrOS &ndash; Chromium Internals
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="Recently, WS was replaced with WS2:
+ window-service: removes mus_demo, test_wm, and some unnecessary deps Issue 865689 Remove window-service  I&amp;rsquo;ve run mus_demo to test ozone-gbm, but now it&amp;rsquo;s gone. :-( So, I need to figure it out what is the difference between WS1 and WS2.
+What is the Window Service of ChromeOS? Window Service is a kind of Window Compositor like Weston. It is a separate process from the browser process in CrOS.|">
+    
+
+    <meta name="apple-mobile-web-app-title" content="Chromium Internals">
+    
+    
+    
+    
+
+
+    <link rel="stylesheet" href="/cros_internals/assets/syntax.css">
+    <link rel="stylesheet" href="/cros_internals/assets/primer-build.css">
+    <link rel="stylesheet" href="/cros_internals/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="http://joone.github.io/cros_internals">
+    Chromium Internals
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">The WindowService2(?) of CrOS</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2018-08-08. Published at: 2018-08-08.">
+        
+          Published: 2018-08-08
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p>Recently, WS was replaced with WS2:</p>
+
+<ul>
+<li><a href="https://chromium-review.googlesource.com/c/chromium/src/+/1144255">window-service: removes mus_demo, test_wm, and some unnecessary deps</a></li>
+<li><a href="https://bugs.chromium.org/p/chromium/issues/detail?id=865689">Issue 865689  Remove window-service</a></li>
+</ul>
+
+<p>I&rsquo;ve run mus_demo to test ozone-gbm, but now it&rsquo;s gone. :-( So, I need
+to figure it out what is the difference between WS1 and WS2.</p>
+
+<p>What is the Window Service of ChromeOS? Window Service is a kind of Window
+Compositor like Weston. It is a separate process from the browser process in CrOS.
+Some of CrOS features are part of the browser process, but those features will
+be a separate process using the WindowService.</p>
+
+<p>For more details, see <a href="https://cs.chromium.org/chromium/src/services/ws/README.md">https://cs.chromium.org/chromium/src/services/ws/README.md</a></p>
+
+<p>&ldquo;Clients establish a connection to the WindowService by configuring Aura with a
+mode of MUS. See aura::Env::Mode for details.</p>
+
+<p>The WindowService provides a way for one client to embed another client in a
+specific window (application composition). Embedding establishes a connection
+to a new client and provides the embedded client with a window to use. See the
+mojom for more details.</p>
+
+<p>For example, on Chrome OS, Ash uses the WindowService to enable separate
+processes, such as the tap_visualizer, to connect to the WindowService. The
+tap_visualizer is a client of the WindowService. The tap_visualizer uses the
+WindowService to create and manage windows, receive events, and ultimately
+draw to the screen (using Viz). This is mostly seamless to the tap_visualizer.
+The tap_visualizer configures Views to use Mus, which results in Views and Aura,
+using the WindowService.&rdquo;</p>
+
+<p>CrOS is now becoming more like a regular desktop. I&rsquo;m not sure this is a good decision.</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>The WindowService2(?) of CrOS</b>
+      
+    </div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+          <span class="text-small text-gray">
+            ©Qiushi Pan 2018.
+Generated with
+<a href="https://gohugo.io" class="link-gray-dark">Hugo</a> and
+<a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme.
+
+          </span>
+        
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+    <script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+  </body>
+</html>
