@@ -1,5 +1,13 @@
-baseURL = "http://example.org/"
+baseURL = "http://joone.github.io/cros_internals"
 languageCode = "en-us"
-title = "My New Hugo Site"
-#theme = "ananke"
+title = "Chromium Internals"
 theme = "hugo-primer"
+copyright = "Written by Joone Hur. All rights reserved."
+
+[params]
+description = "About hacking Chromium"
+twitter = "joone"
+# Chose Social Sharing Buttons you want to use.
+shareTo = ["Twitter", "Facebook", "Pocket"]
+# You may disable copyright sentence by setting this to false.
+creditHugoPrimer = false 

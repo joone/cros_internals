@@ -1,0 +1,81 @@
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+
+
+
+{{ define "main" }}
+<!-- Title -->
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">{{ .Title }}</div>
+  </div>
+  <div class="Subhead-description">
+    {{ partial "taxonomy.html" . }}
+
+    {{ if ( default true .Params.showDate ) }}
+    <div class="float-md-right">
+      <span title="Lastmod: {{ .Lastmod.Format "2006-01-01" }}. Published at: {{ .PublishDate.Format "2006-01-01" }}.">
+        {{ if ne .Lastmod .PublishDate }}
+          Lastmod: {{ dateFormat ( default "2006-01-01" .Site.Params.dateFormat ) .Lastmod }}
+        {{ else }}
+          Published: {{ dateFormat "2006-01-01" .PublishDate }}
+        {{ end }}
+      </span>
+    </div>
+    {{ end }}
+  </div>
+</div>
+<article>
+  <!-- Content -->
+  <section class="pb-6 mb-3 border-bottom">
+    {{ .Content }}
+  </section>
+
+  <section>
+    {{ if (default true .Params.comments) }}
+      {{ template "_internal/disqus.html" . }}
+    {{ end }}
+  </section>
+</article>
+{{ end }}
+
+
+
+{{ define "side" }}
+  {{ if and (gt .WordCount 0 ) (ne .Params.toc "false") }}
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>{{.Title}}</b>
+      {{ .TableOfContents }}
+    </div>
+  {{ end }}
+
+  {{ if .Site.Params.ShareTo }}
+    {{ $baseURL := .Site.BaseURL }}
+    {{ with .Site.Params.ShareTo }}
+      <div>
+        {{ if in . "Twitter" }}
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        {{ end }}
+
+        {{ if in . "Facebook" }}
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        {{ end }}
+
+        {{ if in . "Hatena" }}
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        {{ end }}
+
+        {{ if in . "Pocket" }}
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        {{ end }}
+
+      </div>
+    {{ end }}
+  {{ else }}
+    <div>
+      <!-- Do not share -->
+    </div>
+  {{ end }}
+{{ end }}
