@@ -6,13 +6,22 @@
 set -eu
 
 FILE=chromium.tar
+FILE_TAR=chromium.tar
 
 if [ "$1" == install ] || [ "$1" == update ];
 then
+
+if [ -z "$2" ]; then
+  echo "Input a path for installation"
+  exit 0
+fi
+
   mkdir tmp_cr
   tar -xvf $FILE -C ./tmp_cr
-  mv ./tmp_cr/chromium/src/out/Release chromium
+  mv ./tmp_cr/chromium/src/out/Release $2
   rm -rf tmp_cr
+
+
 elif [ "$1" == package ];
 then
 
